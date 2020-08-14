@@ -3,39 +3,66 @@ import 'package:flutter/material.dart';
 import 'package:kmouin/screens/ThirdFloor.dart';
 import '../widgets/TopContainer.dart';
 import '../screens/SecondFloor.dart';
+import 'dart:ui';
 
-void main() {
-  runApp(MenuPage());
-}
-
-class MenuPage extends StatelessWidget {
-  // This widget is the root of your application.
+class MenuPage extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      home: MyHomePage(),
-      debugShowCheckedModeBanner: false,
-    );
-  }
+  _MenuPageState createState() => _MenuPageState();
 }
 
-class MyHomePage extends StatefulWidget {
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
+class _MenuPageState extends State<MenuPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        titleSpacing: -15,
+        elevation: 0.0,
+        backgroundColor: Colors.transparent,
+        title: Row(
+          children: <Widget>[
+            SizedBox(
+              width: 14,
+            ),
+            Container(
+              width: 100,
+              child: FlatButton(
+                child: Row(
+                  children: <Widget>[
+                    Icon(
+                      Icons.navigate_before,
+                      color: const Color(0xffffffff),
+                    ),
+                    Text(
+                      "메인",
+                      style: const TextStyle(
+                        color: const Color(0xffffffff),
+                        fontWeight: FontWeight.w300,
+                        fontFamily: "NotoSansKR",
+                        fontStyle: FontStyle.normal,
+                        fontSize: 16.0,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+                ),
+                onPressed: () => Navigator.pop(context),
+              ),
+            ),
+          ],
+        ),
+      ),
       backgroundColor: const Color(0xffffffff),
       body: Stack(
         children: <Widget>[
-          TopContainer(
-            child: Image.asset(
-              'images/MenuPage/bg_image.png',
-              fit: BoxFit.cover,
+          BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+            child: TopContainer(
+              child: Image.asset(
+                'images/MenuPage/bg_image.png',
+                fit: BoxFit.cover,
+              ),
             ),
           ),
           Column(
@@ -100,8 +127,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                     child: FlatButton(
                       onPressed: () {
-                        Navigator.push(
-                          context,
+                        Navigator.of(context).push(
                           MaterialPageRoute(
                             builder: (context) => SecondFloor(),
                           ),
@@ -115,6 +141,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               height: 20,
                             ),
                             Container(
+                              padding: EdgeInsets.fromLTRB(7, 0, 7, 0),
                               height: 66,
                               width: 49,
                               child: Image.asset(
