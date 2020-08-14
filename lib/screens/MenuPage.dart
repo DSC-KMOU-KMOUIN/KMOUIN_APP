@@ -141,9 +141,12 @@ class _MenuPageState extends State<MenuPage> {
                               height: 20,
                             ),
                             Container(
-                              padding: EdgeInsets.fromLTRB(7, 0, 7, 0),
-                              height: 66,
                               width: 49,
+                              height: 66,
+                              padding: EdgeInsets.only(
+                                left: 7,
+                                right: 7,
+                              ),
                               child: Image.asset(
                                 'images/MenuPage/second_imoji.png',
                               ),

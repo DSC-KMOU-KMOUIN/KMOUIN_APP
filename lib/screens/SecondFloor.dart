@@ -237,6 +237,26 @@ class _SecondFloorState extends State<SecondFloor> {
                                     textAlign: TextAlign.center),
                               ],
                             ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 34,
+                    ),
+                    Container(
+                      padding: EdgeInsets.all(16),
+                      width: 355,
+                      height: 180,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(18),
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                            color: const Color(0x80cacaca),
+                            offset: Offset(0, -1),
+                            blurRadius: 16,
+                            spreadRadius: 2,
                           ),
                           SizedBox(
                             height: 34,
